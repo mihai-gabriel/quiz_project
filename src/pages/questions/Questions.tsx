@@ -48,7 +48,14 @@ export const Questions: React.FC = () => {
   const [choicesAnswer, setChoicesAnswer] = useState<string[]>([""]);
 
   // Questions Created
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<Question[]>([
+    // {
+    //   id: "1",
+    //   title: "something",
+    //   type: QuestionType.MULTIPLE_CHOICE,
+    //   choices: ["wow", "yes", "cool", "nice"],
+    // },
+  ]);
   const [updatingQuestionId, setUpdatingQuestionId] = useState<string | null>(
     null
   );
@@ -164,7 +171,7 @@ export const Questions: React.FC = () => {
         fontFamily="Share Tech Mono, monospace"
         color="gray.600"
       >
-        Here you will see the top 10 players and their scoring
+        Start creating questions here!
       </Heading>
 
       {updatingQuestionId && (
