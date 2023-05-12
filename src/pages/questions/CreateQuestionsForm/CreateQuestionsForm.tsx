@@ -4,35 +4,66 @@ import {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
+  HStack,
   Input,
   Radio,
   RadioGroup,
   Stack,
   VStack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { MultipleChoiceAnswer } from "./MultipleChoiceAnswer";
+import { QuestionType } from "../Questions.tsx";
 
-export enum QuestionType {
-  MULTIPLE_CHOICE,
-  FREE_TEXT,
+interface CreateQuestionsFormProps {
+  questionType: QuestionType;
+  setQuestionType: (questionType: QuestionType) => void;
+  questionTitle: string;
+  setQuestionTitle: (title: string) => void;
+  setQuestionTitleDirty: (state: boolean) => void;
+  isQuestionTitleValid: boolean;
+  choicesAnswer: string[];
+  setChoicesAnswer: Dispatch<SetStateAction<string[]>>;
+  createQuestion: () => void;
+  updatingQuestionId: string | null;
+  updateQuestion: () => void;
+  cancelForm: () => void;
 }
 
-export const CreateQuestionsForm: React.FC = () => {
-  const [questionType, setQuestionType] = useState(QuestionType.FREE_TEXT);
+export const CreateQuestionsForm: React.FC<CreateQuestionsFormProps> = ({
+  questionType,
+  setQuestionType,
+  questionTitle,
+  setQuestionTitle,
+  setQuestionTitleDirty,
+  isQuestionTitleValid,
+  choicesAnswer,
+  setChoicesAnswer,
+  createQuestion,
+  updatingQuestionId,
+  updateQuestion,
+  cancelForm,
+}) => {
+  const questionTitleIsValid = questionTitle !== "";
+  const choicesArePresent =
+    questionType === QuestionType.MULTIPLE_CHOICE &&
+    choicesAnswer.filter((choice) => choice !== "").length >= 3;
+  const freeTextAnswer = questionType === QuestionType.FREE_TEXT;
 
-  const [questionTitle, setQuestionTitle] = useState("");
-  const [questionTitleDirty, setQuestionTitleDirty] = useState(false);
-  const isQuestionValid = !questionTitleDirty || questionTitle !== "";
+  const isFormValid =
+    questionTitleIsValid && (freeTextAnswer || choicesArePresent);
 
   return (
     <VStack spacing={6} align="left" my={6} maxW="container.sm">
       <FormControl>
         <FormLabel>Type</FormLabel>
-        <RadioGroup defaultValue={questionType.toString()}>
+        <RadioGroup
+          defaultValue={questionType.toString()}
+          value={questionType.toString()}
+        >
           <Stack spacing={5} direction="row">
             <Radio
-              colorScheme="teal"
+              colorScheme={updatingQuestionId ? "orange" : "teal"}
               value="0"
               onChange={(e) =>
                 setQuestionType(Number(e.target.value) as QuestionType)
@@ -41,7 +72,7 @@ export const CreateQuestionsForm: React.FC = () => {
               Multiple Choice
             </Radio>
             <Radio
-              colorScheme="teal"
+              colorScheme={updatingQuestionId ? "orange" : "teal"}
               value="1"
               onChange={(e) =>
                 setQuestionType(Number(e.target.value) as QuestionType)
@@ -56,7 +87,7 @@ export const CreateQuestionsForm: React.FC = () => {
         </FormHelperText>
       </FormControl>
 
-      <FormControl isInvalid={!isQuestionValid}>
+      <FormControl isInvalid={!isQuestionTitleValid}>
         <FormLabel>Title</FormLabel>
         <Input
           type="text"
@@ -67,7 +98,7 @@ export const CreateQuestionsForm: React.FC = () => {
           }}
           placeholder="Type here..."
         />
-        {!isQuestionValid && (
+        {!isQuestionTitleValid && (
           <FormErrorMessage>
             The question title must be provided.
           </FormErrorMessage>
@@ -79,12 +110,23 @@ export const CreateQuestionsForm: React.FC = () => {
       </FormControl>
 
       {questionType === QuestionType.MULTIPLE_CHOICE && (
-        <MultipleChoiceAnswer />
+        <MultipleChoiceAnswer
+          choicesAnswer={choicesAnswer}
+          setChoicesAnswer={setChoicesAnswer}
+        />
       )}
 
-      <Button background="teal.300" color="white">
-        Create
-      </Button>
+      <HStack>
+        <Button
+          background={updatingQuestionId ? "orange.300" : "teal.300"}
+          color="white"
+          onClick={updatingQuestionId ? updateQuestion : createQuestion}
+          isDisabled={!isFormValid}
+        >
+          {updatingQuestionId ? "Update" : "Create"}
+        </Button>
+        {updatingQuestionId && <Button onClick={cancelForm}>Cancel</Button>}
+      </HStack>
     </VStack>
   );
 };

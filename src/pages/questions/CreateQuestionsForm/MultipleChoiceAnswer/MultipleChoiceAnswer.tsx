@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -11,10 +11,18 @@ import {
 } from "@chakra-ui/react";
 import { MdDeleteOutline, GrFormAdd } from "react-icons/all";
 
-export const MultipleChoiceAnswer: React.FC = () => {
-  const MAX_LIMIT = 5;
+interface MultipleChoiceAnswerProps {
+  choicesAnswer: string[];
+  setChoicesAnswer: (
+    choices: string[] | ((choices: string[]) => string[])
+  ) => void;
+}
 
-  const [choicesAnswer, setChoicesAnswer] = useState<string[]>([""]);
+export const MultipleChoiceAnswer: React.FC<MultipleChoiceAnswerProps> = ({
+  choicesAnswer,
+  setChoicesAnswer,
+}) => {
+  const MAX_LIMIT = 5;
 
   return (
     <Box>
