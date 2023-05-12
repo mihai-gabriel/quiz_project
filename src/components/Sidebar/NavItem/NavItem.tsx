@@ -12,7 +12,11 @@ export const NavItem: React.FC<PropsWithChildren<NavItemProps>> = ({
 }) => {
   return (
     <RouterLink to={path}>
-      <Link style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+      <Link
+        style={{ textDecoration: "none" }}
+        _focus={{ boxShadow: "none" }}
+        as="div"
+      >
         <Flex
           align="center"
           p={4}

@@ -7,7 +7,7 @@ const App: React.FC = () => {
   return (
     <Flex>
       <Sidebar />
-      <Container minW={400} my={10}>
+      <Container minW={400} my={10} maxW="container.lg">
         <Outlet />
       </Container>
     </Flex>
