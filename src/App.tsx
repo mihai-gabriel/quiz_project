@@ -1,13 +1,24 @@
 import React from "react";
-import { Sidebar } from "./components/Sidebar";
+import { VerticalSidebar } from "./components/Sidebar";
 import { Outlet } from "react-router-dom";
-import { Container, Flex } from "@chakra-ui/react";
+import { Container, Flex, Hide, Show } from "@chakra-ui/react";
+import { HorizontalBar } from "./components/Sidebar/HorizontalBar.tsx";
 
 const App: React.FC = () => {
   return (
     <Flex>
-      <Sidebar />
-      <Container minW={400} my={10} maxW="container.md">
+      <Hide below="xl">
+        <VerticalSidebar />
+      </Hide>
+      <Show below="xl">
+        <HorizontalBar />
+      </Show>
+      <Container
+        minW={400}
+        mt={25}
+        pt={[20, 20, 20, 20, 0]}
+        maxW="container.md"
+      >
         <Outlet />
       </Container>
     </Flex>

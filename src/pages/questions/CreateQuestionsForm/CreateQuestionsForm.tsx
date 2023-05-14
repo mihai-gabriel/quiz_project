@@ -96,7 +96,7 @@ export const CreateQuestionsForm: React.FC<CreateQuestionsFormProps> = ({
             setQuestionTitle(e.target.value);
             setQuestionTitleDirty(true);
           }}
-          placeholder="Type here..."
+          placeholder="Type title here..."
         />
         {!isQuestionTitleValid && (
           <FormErrorMessage>
@@ -104,8 +104,9 @@ export const CreateQuestionsForm: React.FC<CreateQuestionsFormProps> = ({
           </FormErrorMessage>
         )}
         <FormHelperText>
-          This is the text students will see as the question. They will be
-          provided a text field to enter their answer.
+          This is the text students will see as the question.
+          {questionType === QuestionType.FREE_TEXT &&
+            " They will be provided a text field to enter their answer."}
         </FormHelperText>
       </FormControl>
 

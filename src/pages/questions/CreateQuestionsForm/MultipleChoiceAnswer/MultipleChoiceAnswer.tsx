@@ -26,8 +26,18 @@ export const MultipleChoiceAnswer: React.FC<MultipleChoiceAnswerProps> = ({
 
   return (
     <Box>
-      <Heading as="h4" size="sm" mb={3} fontWeight="semibold">
+      <Heading as="h4" size="sm" fontWeight="semibold">
         Choices
+      </Heading>
+      <Heading
+        as="h4"
+        size="xs"
+        mb={3}
+        mt={1}
+        fontWeight="normal"
+        color="gray.700"
+      >
+        Minimum 3 valid choices
       </Heading>
       <OrderedList spacing={4} style={{ listStyleType: "upper-latin" }}>
         {choicesAnswer.map((answer, idx) => (
@@ -44,7 +54,7 @@ export const MultipleChoiceAnswer: React.FC<MultipleChoiceAnswerProps> = ({
                       ),
                     ])
                   }
-                  placeholder="Type here..."
+                  placeholder="Type answer here..."
                 />
               </FormControl>
               <Button

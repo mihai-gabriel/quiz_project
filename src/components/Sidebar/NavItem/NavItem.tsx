@@ -3,11 +3,13 @@ import { Flex, Link } from "@chakra-ui/react";
 
 interface NavItemProps {
   noBackgroundStyling?: boolean;
+  active?: boolean;
 }
 
 export const NavItem: React.FC<PropsWithChildren<NavItemProps>> = ({
   children,
   noBackgroundStyling,
+  active,
 }) => {
   return (
     <Link
@@ -27,6 +29,10 @@ export const NavItem: React.FC<PropsWithChildren<NavItemProps>> = ({
           bg: noBackgroundStyling ? "transparent" : "teal.400",
           color: noBackgroundStyling ? "black" : "white",
         }}
+        _active={{
+          bg: noBackgroundStyling ? "transparent" : "teal.500",
+        }}
+        fontWeight={active ? "semibold" : "normal"}
       >
         {children}
       </Flex>

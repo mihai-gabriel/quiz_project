@@ -38,7 +38,7 @@ export const Leaderboard: React.FC = () => {
 
   return (
     <Box>
-      <Heading as="h2" size="lg" my={2} fontFamily="Share Tech Mono, monospace">
+      <Heading as="h2" size="lg" mt={2} mb={1} fontFamily="Poppins, sans-serif">
         Leaderboard
       </Heading>
       <Heading
@@ -46,7 +46,7 @@ export const Leaderboard: React.FC = () => {
         size="sm"
         mb={6}
         fontWeight="normal"
-        fontFamily="Share Tech Mono, monospace"
+        fontFamily="Poppins, sans-serif"
         color="gray.600"
       >
         Here you will see the top 10 players and their scoring

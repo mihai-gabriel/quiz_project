@@ -157,8 +157,9 @@ export const Questions: React.FC = () => {
       <Heading
         as="h2"
         size="lg"
-        my={2}
-        fontFamily="Share Tech Mono, monospace"
+        mt={2}
+        mb={1}
+        fontFamily="Poppins, sans-serif"
         id="create-questions"
       >
         Create a question
@@ -168,7 +169,7 @@ export const Questions: React.FC = () => {
         size="sm"
         mb={6}
         fontWeight="normal"
-        fontFamily="Share Tech Mono, monospace"
+        fontFamily="Poppins, sans-serif"
         color="gray.600"
       >
         Start creating questions here!
@@ -198,7 +199,7 @@ export const Questions: React.FC = () => {
 
       <Divider my={6} />
 
-      <Heading as="h2" size="lg" my={2} fontFamily="Share Tech Mono, monospace">
+      <Heading as="h2" size="lg" mt={2} mb={1} fontFamily="Poppins, sans-serif">
         Questions Library
       </Heading>
       <Heading
@@ -206,7 +207,7 @@ export const Questions: React.FC = () => {
         size="sm"
         mb={6}
         fontWeight="normal"
-        fontFamily="Share Tech Mono, monospace"
+        fontFamily="Poppins, sans-serif"
         color="gray.600"
       >
         Questions already created to choose from when creating quizzes
@@ -229,7 +230,12 @@ export const Questions: React.FC = () => {
         ))}
       </Grid>
       {questions.length === 0 && (
-        <Alert status="info" variant="left-accent">
+        <Alert
+          background="gray.100"
+          borderLeftColor="gray.300"
+          variant="left-accent"
+          color="gray.600"
+        >
           No questions created yet. Use the form above to start creating
           questions!
         </Alert>
