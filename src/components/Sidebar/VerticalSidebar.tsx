@@ -7,6 +7,7 @@ import {
   FiLogOut,
   ImStatsDots,
   MdLeaderboard,
+  IoMdSchool,
   MdQuiz,
 } from "react-icons/all";
 import { NavItem } from "./NavItem";
@@ -47,6 +48,12 @@ export const VerticalSidebar: React.FC = () => {
           <NavItem active={location.pathname == "/quizzes"}>
             <Icon as={MdQuiz} />
             <Text>Quizzes</Text>
+          </NavItem>
+        </RouterLink>
+        <RouterLink to="/attempts">
+          <NavItem active={location.pathname == "/attempts"}>
+            <Icon as={IoMdSchool} />
+            <Text>Attempts</Text>
           </NavItem>
         </RouterLink>
         <RouterLink to="/stats">

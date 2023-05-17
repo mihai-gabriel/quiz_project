@@ -6,6 +6,7 @@ import {
   ImStatsDots,
   MdLeaderboard,
   MdQuiz,
+  IoMdSchool,
   FiLogOut,
 } from "react-icons/all";
 import React from "react";
@@ -40,6 +41,11 @@ export const HorizontalBar: React.FC = () => {
       <RouterLink to="/quizzes">
         <NavItem>
           <Icon as={MdQuiz} />
+        </NavItem>
+      </RouterLink>
+      <RouterLink to="/attempts">
+        <NavItem>
+          <Icon as={IoMdSchool} />
         </NavItem>
       </RouterLink>
       <RouterLink to="/stats">

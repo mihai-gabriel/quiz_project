@@ -19,7 +19,7 @@ export const questionsMock: Question[] = [
     title:
       "Incredible exquisite megaphonic intrinsic uncurlable perilous question with a long aah title, yes sir",
     type: QuestionType.MULTIPLE_CHOICE,
-    choices: ["Answer A", "Answer B", "Answer C"],
+    choices: ["Answer 1", "Answer 2", "Answer 3"],
   },
 ];
 

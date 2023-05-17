@@ -6,6 +6,7 @@ import { Questions } from "./pages/questions";
 import { Quizzes } from "./pages/quizzes";
 import { Stats } from "./pages/stats";
 import { Auth } from "./pages/auth";
+import { Attempts } from "./pages/attempts";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/quizzes/",
         element: <Quizzes />,
+      },
+      {
+        path: "/attempts/",
+        element: <Attempts />,
       },
       {
         path: "/stats/",
