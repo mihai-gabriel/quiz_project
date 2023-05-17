@@ -7,6 +7,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 export const Register: React.FC = () => {
   const [fullName, setFullName] = useState("");
@@ -87,7 +88,9 @@ export const Register: React.FC = () => {
         )}
       </FormControl>
 
-      <Button>Sign up</Button>
+      <RouterLink to="/">
+        <Button w="100%">Sign up</Button>
+      </RouterLink>
     </VStack>
   );
 };

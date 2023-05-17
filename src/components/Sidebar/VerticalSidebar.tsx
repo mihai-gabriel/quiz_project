@@ -65,10 +65,12 @@ export const VerticalSidebar: React.FC = () => {
       </VStack>
       <VStack m={6} align="stretch" spacing={2} minW={250}>
         <NavItem noBackgroundStyling>Username</NavItem>
-        <NavItem>
-          <Icon as={FiLogOut} />
-          <Text>Logout</Text>
-        </NavItem>
+        <RouterLink to="/auth">
+          <NavItem>
+            <Icon as={FiLogOut} />
+            <Text>Logout</Text>
+          </NavItem>
+        </RouterLink>
       </VStack>
     </VStack>
   );
